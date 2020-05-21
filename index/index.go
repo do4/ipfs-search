@@ -13,6 +13,7 @@ type Index struct {
 }
 
 // Upsert a document properties and given id
+// TODO: Split out insert and update, to avoid bugs.
 func (i *Index) Upsert(ctx context.Context, id string, properties map[string]interface{}) error {
 	_, err := i.Client.Update().
 		Index(i.Name).
