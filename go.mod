@@ -12,6 +12,7 @@ require (
 	github.com/multiformats/go-multiaddr-net v0.1.5 // indirect
 	github.com/multiformats/go-multibase v0.0.2 // indirect
 	github.com/olivere/elastic v6.2.31+incompatible
+	github.com/olivere/elastic/v6 v6.2.1
 	github.com/olivere/elastic/v7 v7.0.15
 	github.com/smola/gocompat v0.2.0 // indirect
 	github.com/streadway/amqp v0.0.0-20200108173154-1c71cc93ed71
