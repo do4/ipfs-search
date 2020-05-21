@@ -3,7 +3,7 @@ package index
 import (
 	"context"
 	"encoding/json"
-	"github.com/olivere/elastic"
+	"github.com/olivere/elastic/v7"
 )
 
 // Index wraps an Elasticsearch index to store documents
@@ -47,7 +47,7 @@ func (i *Index) GetFields(ctx context.Context, id string, dst interface{}, field
 	}
 
 	// Decode resulting field json into `dst`
-	return json.Unmarshal(*result.Source, dst)
+	return json.Unmarshal(result.Source, dst)
 }
 
 // IsNotFound return true if the error is due to the document not being found.
