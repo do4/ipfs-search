@@ -5,11 +5,14 @@ import (
 )
 
 func (c *Config) FactoryConfig() *factory.Config {
+	indexes := factory.Indexes(c.Indexes)
+
 	return &factory.Config{
 		IpfsAPI:          c.IPFS.IpfsAPI,
 		IpfsTimeout:      c.IPFS.IpfsTimeout,
 		ElasticSearchURL: c.ElasticSearch.ElasticSearchURL,
 		AMQPURL:          c.AMQP.AMQPURL,
 		CrawlerConfig:    c.CrawlerConfig(),
+		Indexes:          &indexes,
 	}
 }

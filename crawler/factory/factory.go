@@ -53,15 +53,15 @@ func New(config *Config, errc chan<- error) (*Factory, error) {
 		shell:         sh,
 		fileIndex: &index.Index{
 			Client: el,
-			Name:   "ipfs_files_v0",
+			Name:   config.Indexes.Files,
 		},
 		directoryIndex: &index.Index{
 			Client: el,
-			Name:   "ipfs_directories_v0",
+			Name:   config.Indexes.Directories,
 		},
 		invalidIndex: &index.Index{
 			Client: el,
-			Name:   "ipfs_invalids_v0",
+			Name:   config.Indexes.Invalids,
 		},
 	}, nil
 }

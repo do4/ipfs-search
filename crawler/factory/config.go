@@ -5,6 +5,12 @@ import (
 	"time"
 )
 
+type Indexes struct {
+	Files       string
+	Directories string
+	Invalids    string
+}
+
 // Config defines configuration for a crawler factory
 type Config struct {
 	IpfsAPI          string
@@ -13,4 +19,5 @@ type Config struct {
 	IpfsTimeout      time.Duration // Timeout for IPFS gateway HTTPS requests
 
 	CrawlerConfig *crawler.Config
+	Indexes       *Indexes
 }
