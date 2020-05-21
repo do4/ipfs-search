@@ -1,7 +1,7 @@
 package factory
 
 import (
-	"github.com/olivere/elastic/v6"
+	"github.com/olivere/elastic/v7"
 	"golang.org/x/net/context"
 	"log"
 )

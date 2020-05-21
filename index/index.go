@@ -3,7 +3,7 @@ package index
 import (
 	"context"
 	"encoding/json"
-	"github.com/olivere/elastic/v6"
+	"github.com/olivere/elastic/v7"
 )
 
 // Index wraps an Elasticsearch index to store documents
@@ -17,7 +17,6 @@ type Index struct {
 func (i *Index) Upsert(ctx context.Context, id string, properties map[string]interface{}) error {
 	_, err := i.Client.Update().
 		Index(i.Name).
-		Type("_doc").
 		Id(id).
 		Doc(properties).
 		DocAsUpsert(true).
@@ -40,7 +39,6 @@ func (i *Index) GetFields(ctx context.Context, id string, dst interface{}, field
 	result, err := i.Client.
 		Get().
 		Index(i.Name).
-		Type("_doc").
 		FetchSourceContext(fsc).
 		Id(id).
 		Do(ctx)
@@ -50,7 +48,7 @@ func (i *Index) GetFields(ctx context.Context, id string, dst interface{}, field
 	}
 
 	// Decode resulting field json into `dst`
-	return json.Unmarshal(*result.Source, dst)
+	return json.Unmarshal(result.Source, dst)
 }
 
 // IsNotFound return true if the error is due to the document not being found.
