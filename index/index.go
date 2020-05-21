@@ -17,6 +17,7 @@ type Index struct {
 func (i *Index) Upsert(ctx context.Context, id string, properties map[string]interface{}) error {
 	_, err := i.Client.Update().
 		Index(i.Name).
+		Type("_doc").
 		Id(id).
 		Doc(properties).
 		DocAsUpsert(true).
@@ -39,6 +40,7 @@ func (i *Index) GetFields(ctx context.Context, id string, dst interface{}, field
 	result, err := i.Client.
 		Get().
 		Index(i.Name).
+		Type("_doc").
 		FetchSourceContext(fsc).
 		Id(id).
 		Do(ctx)
