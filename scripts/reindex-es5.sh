@@ -186,7 +186,8 @@ PUT /ipfs_files_v0
                 "format": "date_time_no_millis"
             },
             "content":  {
-                "type": "text"
+                "type": "text",
+                "term_vector": "with_positions_offsets"
             },
             "ipfs_tika_version": {
               "type": "keyword"
