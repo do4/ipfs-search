@@ -156,6 +156,32 @@ PUT /ipfs_files_v0
               "limit": "8192"
           }
       },
+        "analysis": {
+            "filter": {
+                "shingle_filter": {
+                    "type": "shingle",
+                    "min_shingle_size": 5,
+                    "max_shingle_size": 5,
+                    "output_unigrams": false
+                },
+                "minhash_filter": {
+                    "type": "min_hash",
+                    "hash_count": 1,
+                    "bucket_count": 512,
+                    "hash_set_size": 1,
+                    "with_rotation": true
+                }
+            }
+        },
+        "analyzer": {
+            "fingerprint_analyzer": {
+                "tokenizer": "standard",
+                "filter": [
+                  "shingle_filter",
+                  "minhash_filter"
+                ]
+            }
+        }
     "number_of_shards" : "5",
     "number_of_replicas": "0"
     }
@@ -188,6 +214,10 @@ PUT /ipfs_files_v0
             "content":  {
                 "type": "text",
                 "term_vector": "with_positions_offsets"
+            },
+            "fingerprint": {
+                "type": "text",
+                "analyzer": "fingerprint_analyzer",
             },
             "ipfs_tika_version": {
               "type": "keyword"
