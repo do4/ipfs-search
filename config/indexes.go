@@ -33,17 +33,17 @@ func IndexesDefaults() Indexes {
 
     return Indexes{
         "files": &elasticsearch.Config{
-            Name:     "ipfs_files_v0",
+            Name:     "ipfs_files_v7",
             Settings: fileSettings,
             Mapping:  fileMapping,
         },
         "directories": &elasticsearch.Config{
-            Name:     "ipfs_directories_v0",
+            Name:     "ipfs_directories_v7",
             Settings: dirSettings,
             Mapping:  dirMapping,
         },
         "invalids": &elasticsearch.Config{
-            Name:     "ipfs_invalids_v0",
+            Name:     "ipfs_invalids_v7",
             Settings: invalidSettings,
             Mapping:  invalidMapping,
         },
