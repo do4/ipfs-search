@@ -1,13 +1,50 @@
 package config
 
 // Write JSON here to keep correspondence with browser-based settings
-const indexSettingsJSON = `{
+
+const fileSettingsJSON = `{
   "index": {
-    "refresh_interval": "-1",
+    "refresh_interval": "15m",
     "mapping": {
       "total_fields": {
         "limit": "8192"
       }
+    },
+    "query": {
+      "default_field": [
+        "content",
+        "fingerprint",
+        "first-seen",
+        "ipfs_tika_version",
+        "language.confidence",
+        "language.language",
+        "language.rawScore",
+        "last-seen",
+        "metadata.Content-Type",
+        "metadata.X-Parsed-By",
+        "metadata.author",
+        "metadata.created",
+        "metadata.date",
+        "metadata.description",
+        "metadata.isbn",
+        "metadata.keywords",
+        "metadata.language",
+        "metadata.modified",
+        "metadata.name",
+        "metadata.producer",
+        "metadata.publisher",
+        "metadata.resourceName",
+        "metadata.title",
+        "metadata.xmpDM:album",
+        "metadata.xmpDM:albumArtist",
+        "metadata.xmpDM:artist",
+        "metadata.xmpDM:composer",
+        "references.hash",
+        "references.name",
+        "references.parent_hash",
+        "size",
+        "urls"
+      ]
     },
     "analysis": {
       "filter": {
@@ -34,10 +71,10 @@ const indexSettingsJSON = `{
           ]
         }
       }
-    }
-  },
-  "number_of_shards": "20",
-  "number_of_replicas": "0"
+    },
+    "number_of_shards": "20",
+    "number_of_replicas": "0"
+  }
 }`
 
 const fileMappingJSON = `{
@@ -186,6 +223,14 @@ const fileMappingJSON = `{
   }
 }`
 
+const dirSettingsJSON = `{
+  "index": {
+    "refresh_interval": "15m",
+    "number_of_shards": "20",
+    "number_of_replicas": "0"
+  }
+}`
+
 const dirMappingJSON = `{
   "dynamic": "strict",
   "properties": {
@@ -236,6 +281,14 @@ const dirMappingJSON = `{
         }
       }
     }
+  }
+}`
+
+const invalidSettingsJSON = `{
+  "index": {
+    "refresh_interval": "15m",
+    "number_of_shards": "20",
+    "number_of_replicas": "0"
   }
 }`
 

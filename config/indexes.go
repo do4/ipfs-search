@@ -10,15 +10,21 @@ type Indexes map[string]*elasticsearch.Config
 
 // IndexesDefaults returns the default indexes.
 func IndexesDefaults() Indexes {
-    var indexSettings, fileMapping, dirMapping, invalidMapping map[string]interface{}
+    var fileSettings, fileMapping, dirSettings, dirMapping, invalidSettings, invalidMapping map[string]interface{}
 
-    if err := json.Unmarshal([]byte(indexSettingsJSON), &indexSettings); err != nil {
+    if err := json.Unmarshal([]byte(fileSettingsJSON), &fileSettings); err != nil {
         panic(err)
     }
     if err := json.Unmarshal([]byte(fileMappingJSON), &fileMapping); err != nil {
         panic(err)
     }
+    if err := json.Unmarshal([]byte(dirSettingsJSON), &dirSettings); err != nil {
+        panic(err)
+    }
     if err := json.Unmarshal([]byte(dirMappingJSON), &dirMapping); err != nil {
+        panic(err)
+    }
+    if err := json.Unmarshal([]byte(invalidSettingsJSON), &invalidSettings); err != nil {
         panic(err)
     }
     if err := json.Unmarshal([]byte(invalidMappingJSON), &invalidMapping); err != nil {
@@ -28,17 +34,17 @@ func IndexesDefaults() Indexes {
     return Indexes{
         "files": &elasticsearch.Config{
             Name:     "ipfs_files_v0",
-            Settings: indexSettings,
+            Settings: fileSettings,
             Mapping:  fileMapping,
         },
         "directories": &elasticsearch.Config{
             Name:     "ipfs_directories_v0",
-            Settings: indexSettings,
+            Settings: dirSettings,
             Mapping:  dirMapping,
         },
         "invalids": &elasticsearch.Config{
             Name:     "ipfs_invalids_v0",
-            Settings: indexSettings,
+            Settings: invalidSettings,
             Mapping:  invalidMapping,
         },
     }
