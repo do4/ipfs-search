@@ -10,6 +10,8 @@ services:
     ports:
       - 9200:9200
       - 9300:9300
+    environment:
+      - discovery.type=single-node
   ipfs:
     image: ipfs/go-ipfs:v0.4.23
     ports:
