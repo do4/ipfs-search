@@ -50,7 +50,7 @@ func (i *Index) setSettings(ctx context.Context) error {
 	// Missing: "shard.check_on_startup", requires "flat_settings".
 	staticSettings := []string{
 		"number_of_shards", "codec", "routing_partition_size",
-		"load_fixed_bitset_filters_eagerly", "hidden",
+		"load_fixed_bitset_filters_eagerly", "hidden", "analysis",
 	}
 
 	for _, s := range staticSettings {
