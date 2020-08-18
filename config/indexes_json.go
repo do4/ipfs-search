@@ -50,16 +50,16 @@ const fileSettingsJSON = `{
       "filter": {
         "shingle_filter": {
           "type": "shingle",
-          "min_shingle_size": 5,
-          "max_shingle_size": 5,
-          "output_unigrams": false
+          "min_shingle_size": "5",
+          "max_shingle_size": "5",
+          "output_unigrams": "false"
         },
         "minhash_filter": {
           "type": "min_hash",
-          "hash_count": 1,
-          "bucket_count": 512,
-          "hash_set_size": 1,
-          "with_rotation": true
+          "hash_count": "1",
+          "bucket_count": "512",
+          "hash_set_size": "1",
+          "with_rotation": "true"
         }
       },
       "analyzer": {
